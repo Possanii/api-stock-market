@@ -39,7 +39,3 @@ Contributions are welcome! If you'd like to contribute to API-Stock-Market, plea
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
----
-
-Feel free to customize it further to fit your project's specific needs!
