@@ -2,7 +2,7 @@ import { IRequest } from "./IRequest";
 
 export interface IResponse {
   statusCode: number;
-  body: Record<string, any> | null;
+  body: Record<string, unknown> | null;
 }
 
 export interface IController {

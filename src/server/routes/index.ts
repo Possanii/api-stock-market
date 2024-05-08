@@ -1,2 +1,2 @@
 import "./usersRoutes";
-import "./welcome";
+import "./welcome/welcome";
