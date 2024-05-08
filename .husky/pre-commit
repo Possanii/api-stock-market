@@ -1,4 +1,13 @@
 echo 'Checking for linting errors...'
 yarn typecheck || (echo 'Linting errors. Please, fix them before commiting' && exit 1)
 
+echo 'Checking for linting errors...'
+yarn lint || (echo 'Linting errors. Please, fix them before commiting' && exit 1)
+
+echo 'Checking for formating errors...'
+yarn format:check || (echo 'Formating errors. Please, fix them before commiting' && exit 1)
+
+echo 'Running tests for errors...'
+yarn test
+
 echo 'Done!'
