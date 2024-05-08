@@ -6,7 +6,7 @@ const DBSOURCE = "db.sqlite";
 const DDL_SCRIPT = `
   CREATE TABLE IF NOT EXISTS Users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT UNIQUE NOT NULL,
+    username TEXT NOT NULL,
     password TEXT NOT NULL,
     email TEXT UNIQUE NOT NULL
   );
@@ -47,14 +47,11 @@ const database = new sqlite3.Database(DBSOURCE, (err) => {
     console.error(err.message);
     throw err;
   } else {
-    console.log("Database connected.");
     // Criar as tabelas se elas não existirem
     database.exec(DDL_SCRIPT, (err) => {
       if (err) {
-        console.error("Error creating tables:", err);
         throw err;
       }
-      console.log("Tables created (if they did not exist).");
     });
   }
 });

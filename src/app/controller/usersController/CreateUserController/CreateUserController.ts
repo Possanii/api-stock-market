@@ -1,8 +1,8 @@
 import z, { ZodError } from "zod";
-import { CreateUserError } from "../../errors/usersErrors/CreateUserError";
-import { IController, IResponse } from "../../interfaces/IController";
-import { IRequest } from "../../interfaces/IRequest";
-import { CreateUserService } from "../../services/usersServices/CreateUserService";
+import { CreateUserError } from "../../../errors/usersErrors/CreateUserError";
+import { IController, IResponse } from "../../../interfaces/IController";
+import { IRequest } from "../../../interfaces/IRequest";
+import { CreateUserService } from "../../../services/usersServices/CreateUserService";
 
 const createUserSchema = z.object({
   username: z.string().min(1),
