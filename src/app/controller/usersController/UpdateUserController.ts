@@ -24,19 +24,15 @@ export class UpdateUserController implements IController {
     try {
       const { username, password, email, id } = updateUserSchema.parse(body);
 
-      const userFound = await this.updateUserService.execute({
+      await this.updateUserService.execute({
         username,
         password,
         email,
         id,
       });
 
-      if (!userFound) {
-        throw new UserNotFound();
-      }
-
       return {
-        statusCode: 204,
+        statusCode: 200,
         body: {
           message: "User with id " + id + " has been successfully updated",
         },

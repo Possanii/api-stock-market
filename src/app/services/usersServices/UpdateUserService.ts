@@ -8,17 +8,17 @@ export class updateUserService {
     password,
     email,
     id,
-  }: Partial<IUser>): Promise<boolean> {
+  }: Partial<IUser>): Promise<void> {
     const sql =
       "UPDATE Users SET username = ?, password = ?, email = ? WHERE id = ?";
     const params = [username, password, email, id];
 
     return new Promise((resolve, reject) => {
       database.run(sql, params, function (err) {
-        if (err) {
+        if (err || this.changes === 0) {
           reject(new UserNotFound());
         } else {
-          resolve(this.changes !== 0);
+          resolve();
         }
       });
     });

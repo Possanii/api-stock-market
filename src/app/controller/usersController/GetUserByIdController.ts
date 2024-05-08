@@ -23,10 +23,6 @@ export class GetUserByIdController implements IController {
 
       const user = await this.getUserByIdService.execute({ id });
 
-      if (!user) {
-        throw new UserNotFound();
-      }
-
       return {
         statusCode: 200,
         body: { user },

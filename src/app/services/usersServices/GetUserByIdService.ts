@@ -8,7 +8,7 @@ export class GetUserByIdService {
     const params = [id];
     return new Promise((resolve, reject) => {
       database.get(sql, params, (err, row) => {
-        if (err) {
+        if (err || !row) {
           reject(new UserNotFound());
         } else {
           resolve(row as IUser);
