@@ -1,0 +1,4 @@
+echo 'Checking for linting errors...'
+yarn typecheck || (echo 'Linting errors. Please, fix them before commiting' && exit 1)
+
+echo 'Done!'
