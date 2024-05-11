@@ -1,4 +1,4 @@
-import { DeleteUserController } from "../../../app/controller/usersController/DeleteUserController";
+import { DeleteUserController } from "../../../app/controller/usersController/DeleteUserController/DeleteUserController";
 import { makeDeleteUserService } from "../../services/usersServices/makeDeleteUserService";
 
 export function makeDeleteUserController() {

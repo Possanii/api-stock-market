@@ -1,8 +1,8 @@
 import z, { ZodError } from "zod";
-import { UserNotFound } from "../../errors/usersErrors/UserNotFound";
-import { IController, IResponse } from "../../interfaces/IController";
-import { IRequest } from "../../interfaces/IRequest";
-import { DeleteUserService } from "../../services/usersServices/DeleteUserService";
+import { UserNotFound } from "../../../errors/usersErrors/UserNotFound";
+import { IController, IResponse } from "../../../interfaces/IController";
+import { IRequest } from "../../../interfaces/IRequest";
+import { DeleteUserService } from "../../../services/usersServices/DeleteUserService";
 
 const deleteUserSchema = z.object({
   id: z.union([
@@ -37,7 +37,7 @@ export class DeleteUserController implements IController {
 
       if (err instanceof UserNotFound) {
         return {
-          statusCode: 400,
+          statusCode: 404,
           body: {
             message: "Something went wrong while deleting user",
             error: err,
