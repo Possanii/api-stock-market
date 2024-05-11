@@ -8,7 +8,9 @@ const DDL_SCRIPT = `
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL,
     password TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL
+    email TEXT UNIQUE NOT NULL,
+    status BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
   );
 
   CREATE TABLE IF NOT EXISTS Stocks (
@@ -23,10 +25,10 @@ const DDL_SCRIPT = `
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     userId INTEGER NOT NULL,
     stockId INTEGER NOT NULL,
-    type TEXT NOT NULL,
+    type TEXT CHECK(type IN ('BUY', 'SELL'))  NOT NULL,
     quantity INTEGER NOT NULL,
     pricePerStock INTEGER NOT NULL,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (userId) REFERENCES Users(id),
     FOREIGN KEY (stockId) REFERENCES Stocks(id)
   );
@@ -35,7 +37,7 @@ const DDL_SCRIPT = `
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     userId INTEGER NOT NULL,
     stockId INTEGER NOT NULL,
-    quantity INTEGER NOT NULL,
+    balance INTEGER NOT NULL,
     FOREIGN KEY (userId) REFERENCES Users(id),
     FOREIGN KEY (stockId) REFERENCES Stocks(id)
   );
