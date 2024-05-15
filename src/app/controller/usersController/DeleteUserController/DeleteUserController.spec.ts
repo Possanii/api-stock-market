@@ -8,9 +8,9 @@ describe("Delete an user by id", () => {
   test("Should delete a user by id", async () => {
     const response = await makeCreateUserController().handle({
       body: {
-        username: "testuser",
-        password: "testpassword",
-        email: "test@example.com",
+        username: "deleteUser",
+        password: "deleteUser",
+        email: "deleteUser@example.com",
       },
     } as IRequest);
 

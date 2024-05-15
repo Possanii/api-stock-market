@@ -1,4 +1,4 @@
-import { GetUserByIdController } from "../../../app/controller/usersController/GetUserByIdController";
+import { GetUserByIdController } from "../../../app/controller/usersController/GetUserByIdController/GetUserByIdController";
 import { makeGetUserByIdService } from "../../services/usersServices/makeGetUserByIdService";
 
 export function makeGetUserByIdController() {

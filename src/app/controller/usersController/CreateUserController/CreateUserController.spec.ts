@@ -11,9 +11,9 @@ describe("create a new user", () => {
   test("should create a new user", async () => {
     const response: IResponse = await makeCreateUserController().handle({
       body: {
-        username: "testuser",
-        password: "testpassword",
-        email: "test@example.com",
+        username: "createUser",
+        password: "createUser",
+        email: "createUser@example.com",
       },
     } as IRequest);
 
@@ -42,9 +42,9 @@ describe("try to create an user with an email that already exists", () => {
   test("should throw an error for duplicate email", async () => {
     const response: IResponse = await makeCreateUserController().handle({
       body: {
-        username: "testuser",
-        password: "testpassword",
-        email: "test@example.com",
+        username: "createUser",
+        password: "createUser",
+        email: "createUser@example.com",
       },
     } as IRequest);
 
@@ -74,8 +74,8 @@ describe("create a user with missing username", () => {
   test("should throw an error for invalid data (username)", async () => {
     const response: IResponse = await makeCreateUserController().handle({
       body: {
-        password: "testpassword",
-        email: "test@example.com",
+        password: "createUser",
+        email: "createUser@example.com",
       },
     } as IRequest);
 
@@ -91,8 +91,8 @@ describe("create a user with missing password", () => {
   test("should throw an error for invalid data (password)", async () => {
     const response: IResponse = await makeCreateUserController().handle({
       body: {
-        username: "testuser",
-        email: "test@example.com",
+        username: "createUser",
+        email: "createUser@example.com",
       },
     } as IRequest);
 
@@ -108,8 +108,8 @@ describe("create a user with missing password", () => {
   test("should throw an error for invalid data (email)", async () => {
     const response: IResponse = await makeCreateUserController().handle({
       body: {
-        username: "testuser",
-        password: "testpassword",
+        username: "createUser",
+        password: "createUser",
       },
     } as IRequest);
 
