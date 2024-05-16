@@ -1,5 +1,5 @@
 import { BadRequestError } from "../../errors/*/BadRequestError";
-import { CreateStockError } from "../../errors/stocksError/CreateStockError";
+import { GetStockError } from "../../errors/stocksError/GetStockError";
 import { IStock } from "../../interfaces/IStock";
 import database from "../../utils/database";
 
@@ -21,14 +21,14 @@ export class CreateStockService {
       return new Promise((resolve, reject) => {
         database.run(sql, params, function (err) {
           if (err) {
-            reject(new BadRequestError(err.message));
+            reject(new GetStockError());
           } else {
             resolve({ id: this.lastID });
           }
         });
       });
     } catch (error) {
-      throw new CreateStockError();
+      throw new BadRequestError();
     }
   }
 }
