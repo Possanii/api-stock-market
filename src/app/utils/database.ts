@@ -37,7 +37,7 @@ const DDL_SCRIPT = `
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     userId INTEGER NOT NULL,
     stockId INTEGER NOT NULL,
-    balance INTEGER NOT NULL,
+    quantity INTEGER NOT NULL,
     FOREIGN KEY (userId) REFERENCES Users(id),
     FOREIGN KEY (stockId) REFERENCES Stocks(id)
   );
