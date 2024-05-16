@@ -13,14 +13,7 @@ const schame = z.object({
       .transform((value) => Number(value)),
     z.number().min(1),
   ]),
-  stockId: z.union([
-    z
-      .string()
-      .min(1)
-      .transform((value) => Number(value)),
-    z.number().min(1),
-  ]),
-  quantity: z.union([
+  balance: z.union([
     z
       .string()
       .min(1)
@@ -34,12 +27,11 @@ export class CreateWalletController implements IController {
 
   async handle({ body }: IRequest): Promise<IResponse> {
     try {
-      const { userId, stockId, quantity } = schame.parse(body);
+      const { userId, balance } = schame.parse(body);
 
       const { id } = await this.createWalletService.execute({
         userId,
-        stockId,
-        quantity,
+        balance,
       });
 
       return {

@@ -6,13 +6,11 @@ import database from "../../utils/database";
 export class CreateWalletService {
   async execute({
     userId,
-    stockId,
-    quantity,
+    balance,
   }: Partial<IWallet>): Promise<{ id: number }> {
     try {
-      const sql =
-        "INSERT INTO Wallet (userId, stockId, quantity) VALUES(?, ?, ?)";
-      const params = [userId, stockId, quantity];
+      const sql = "INSERT INTO Wallet (userId, balance) VALUES(?, ?, ?)";
+      const params = [userId, balance];
 
       return new Promise((resolve, reject) => {
         database.run(sql, params, function (error) {
