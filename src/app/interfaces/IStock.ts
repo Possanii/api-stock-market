@@ -3,5 +3,5 @@ export interface IStock {
   companyName: string;
   symbol: string;
   currentPrice: number;
-  description: string;
+  description?: string;
 }
