@@ -37,7 +37,7 @@ const DDL_SCRIPT = `
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     userId INTEGER NOT NULL,
     balance INTEGER NOT NULL,
-    FOREIGN KEY (userId) REFERENCES Users(id),
+    FOREIGN KEY (userId) REFERENCES Users(id)
   );
 
   CREATE TABLE IF NOT EXISTS StocksWallets (
@@ -47,7 +47,7 @@ const DDL_SCRIPT = `
     quantity INTEGER NOT NULL,
     FOREIGN KEY (userId) REFERENCES Users(id),
     FOREIGN KEY (stockId) REFERENCES Stocks(id)
-  )
+  );
 `;
 
 // Conectar ao banco de dados SQLite
