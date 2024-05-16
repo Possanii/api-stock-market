@@ -43,7 +43,7 @@ export class CreateStockController implements IController {
         return {
           statusCode: 400,
           body: {
-            message: "Something whent wrong while creating stock",
+            message: "Something when wrong while creating stock",
             error: err,
           },
         };
