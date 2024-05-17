@@ -1,7 +1,6 @@
 export interface ITransaction {
   id: number;
-  walletId: number;
-  stockId: number;
+  stocksWalletsId: number;
   type: "BUY" | "SELL";
   quantity: number;
   pricePerStock: number;
