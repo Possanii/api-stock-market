@@ -9,7 +9,8 @@ const DDL_SCRIPT = `
     username TEXT NOT NULL,
     password TEXT NOT NULL,
     email TEXT UNIQUE NOT NULL,
-    status BOOLEAN DEFAULT TRUE,
+    active BOOLEAN DEFAULT TRUE,
+    status TEXT CHECK(status in('ACTIVE','DISABLED')) DEFAULT 'ACTIVE',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
   );
 
@@ -18,19 +19,19 @@ const DDL_SCRIPT = `
     companyName TEXT NOT NULL,
     symbol TEXT UNIQUE NOT NULL,
     currentPrice INTEGER NOT NULL,
-    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     description TEXT
   );
 
   CREATE TABLE IF NOT EXISTS Transactions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    userId INTEGER NOT NULL,
+    walletId INTEGER NOT NULL,
     stockId INTEGER NOT NULL,
     type TEXT CHECK(type IN ('BUY', 'SELL'))  NOT NULL,
     quantity INTEGER NOT NULL,
     pricePerStock INTEGER NOT NULL,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (userId) REFERENCES Users(id),
+    FOREIGN KEY (walletId) REFERENCES Wallet(id),
     FOREIGN KEY (stockId) REFERENCES Stocks(id)
   );
 
