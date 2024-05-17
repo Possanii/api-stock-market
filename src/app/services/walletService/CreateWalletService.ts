@@ -9,7 +9,7 @@ export class CreateWalletService {
     balance,
   }: Partial<IWallet>): Promise<{ id: number }> {
     try {
-      const sql = "INSERT INTO Wallet (userId, balance) VALUES(?, ?, ?)";
+      const sql = "INSERT INTO Wallet (userId, balance) VALUES(?, ?)";
       const params = [userId, balance];
 
       return new Promise((resolve, reject) => {
