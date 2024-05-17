@@ -25,14 +25,12 @@ const DDL_SCRIPT = `
 
   CREATE TABLE IF NOT EXISTS Transactions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    walletId INTEGER NOT NULL,
-    stockId INTEGER NOT NULL,
+    stocksWalletsId INTEGER NOT NULL,
     type TEXT CHECK(type IN ('BUY', 'SELL'))  NOT NULL,
     quantity INTEGER NOT NULL,
     pricePerStock INTEGER NOT NULL,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (walletId) REFERENCES Wallet(id),
-    FOREIGN KEY (stockId) REFERENCES Stocks(id)
+    FOREIGN KEY (StocksWalletsId) REFERENCES StocksWallets(id)
   );
 
   CREATE TABLE IF NOT EXISTS Wallet (
