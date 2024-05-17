@@ -18,6 +18,7 @@ const DDL_SCRIPT = `
     companyName TEXT NOT NULL,
     symbol TEXT UNIQUE NOT NULL,
     currentPrice INTEGER NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     description TEXT
   );
 
@@ -28,7 +29,7 @@ const DDL_SCRIPT = `
     type TEXT CHECK(type IN ('BUY', 'SELL'))  NOT NULL,
     quantity INTEGER NOT NULL,
     pricePerStock INTEGER NOT NULL,
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (userId) REFERENCES Users(id),
     FOREIGN KEY (stockId) REFERENCES Stocks(id)
   );
@@ -37,15 +38,17 @@ const DDL_SCRIPT = `
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     userId INTEGER NOT NULL,
     balance INTEGER NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (userId) REFERENCES Users(id)
   );
 
   CREATE TABLE IF NOT EXISTS StocksWallets (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    userId INTEGER NOT NULL,
-    StockId INTEGER NOT NULL,
+    walletId INTEGER NOT NULL,
+    stockId INTEGER NOT NULL,
     quantity INTEGER NOT NULL,
-    FOREIGN KEY (userId) REFERENCES Users(id),
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (walletId) REFERENCES Wallet(id),
     FOREIGN KEY (stockId) REFERENCES Stocks(id)
   );
 `;
